@@ -1,5 +1,17 @@
+<?php
+  $productA = [
+    "name" => "アボカド",
+    "price" => 230,
+    "image" => "./images/image_1.jpg"
+  ];
+  $productB = [
+    "name" => "オレンジ",
+    "price" => 300,
+    "image" => "./images/image_2.jpg"
+  ];
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,10 +24,18 @@
       <h1 class="title">DailyTrial Shopping</h1>
       <div class="cards-container">
         <div class="card">
-          <img class="card-image" src="https://dnbz0c2oupsw6.cloudfront.net/bcekt8ctzrsfdj1gsus49v9tnhqu" alt="">
-          <p class="card-title">ミネラルウォーター</p>
+          <img class="card-image" src="<?php echo $productA["image"]; ?>" alt="">
+          <p class="card-title"><?php echo $productA["name"]; ?></p>
           <div class="flex justify-between">
-            <p class="card-price">230円</p>
+            <p class="card-price"><?php echo $productA["price"]."円";?></p>
+            <input min="0" class="item-number" type="number" value="0">
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-image" src="<?php echo $productB["image"]; ?>" alt="">
+          <p class="card-title"><?php echo $productB["name"]; ?></p>
+          <div class="flex justify-between">
+            <p class="card-price"><?php echo $productB["price"]."円";?></p>
             <input min="0" class="item-number" type="number" value="0">
           </div>
         </div>
