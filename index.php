@@ -1,4 +1,5 @@
 <?php require_once 'products.php' ?>
+<?php require_once 'function.php' ?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -12,20 +13,26 @@
   <div class="container">
     <div class="app-container">
       <h1 class="title">DailyTrial Shopping</h1>
-      <div class="cards-container">
-        <?php foreach($products as $product): ?>
-          <div class="card">
-            <img class="card-image" src="<?php echo $product["image"]; ?>" alt="">
-            <p class="card-title"><?php echo $product["name"]; ?></p>
-            <div class="flex justify-between">
-              <p class="card-price"><?php echo $product["price"]."円";?></p>
-              <input min="0" class="item-number" type="number" value="0">
+      <!-- 購入商品のデータをcart.phpへ保存する -->
+      <form id="cart" method="post" action="cart.php" class="">
+        <div class="cards-container">
+          <?php foreach($products as $product): ?>
+            <div class="card">
+              <img class="card-image" src="<?php echo $product["image"]; ?>" alt="">
+              <p class="card-title"><?php echo $product["name"]; ?></p>
+              <div class="flex justify-between">
+                <p class="card-price"><?php echo displayPrice($product["price"]);?></p>
+                <!-- idを固有の値にするため、nameに記述 -->
+                <input name="<?php echo $product["id"] ?>" min="0" class="item-number" type="number" value="0">
+              </div>
             </div>
-          </div>
-        <?php endforeach; ?>
-      </div>
+          <?php endforeach; ?>
+        </div>
+      </form>
+      <!-- カートに追加ボタンを押した時に上記Formタグで囲った部分の情報の受け渡しに対応する -->
       <div class="btn-footer bg-white">
-        <input class="cart-btn" type="submit" name="submit" value="カートに追加" />
+        <!-- formのidとinputのformが対応している -->
+        <input form="cart" class="cart-btn" type="submit" name="submit" value="カートに追加" />
       </div>
     </div>
   </div>
