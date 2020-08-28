@@ -1,29 +1,13 @@
 <?php
+  require_once 'classes/product.php';
+
   $products = [
-    [
-      "id" => "avocado",
-      "name" => "アボカド",
-      "price" => 230,
-      "image" => "./images/image_1.jpg"
-    ],
-    [
-      "id" => "orange",
-      "name" => "オレンジ",
-      "price" => 300,
-      "image" => "./images/image_2.jpg"
-    ],
-    [
-      "id" => "lemon",
-      "name" => "レモン",
-      "price" => 400,
-      "image" => "./images/image_3.jpg"
-    ],
-    [
-      "id" => "pineapple",
-      "name" => "パイナップル",
-      "price" => 500,
-      "image" => "./images/image_4.jpg"
-    ],
+    // インスタンスの追加はnewで(id,name,値段、画像の順で)取得
+    new Product("avocado","アボガド",230,"./images/image_1.jpg"),
+    new Product("orange","オレンジ",300,"./images/image_2.jpg"),
+    new Product("lemon","レモン",400,"./images/image_3.jpg"),
+    new Product("pineapple","パイナップル",500,"./images/image_4.jpg")
+
   ];
 
 ?>
