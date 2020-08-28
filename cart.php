@@ -2,7 +2,7 @@
   require_once 'products.php';
   $sum = 0;
   foreach($products as $product)  {
-    $price = $product["price"] * $_POST[$product["id"]];
+    $price = $product->getPrice() * $_POST[$product->getId()];
     $sum = $sum + $price;
   }
 
@@ -22,14 +22,14 @@
       <h1 class="title">Shopping Cart</h1>
       <div class="carts-container">
         <?php foreach($products as $product): ?>
-          <?php if ($_POST[$product["id"]] > 0): ?>
+          <?php if ($_POST[$product->getId()] > 0): ?>
             <div class="cart-item">
                 <div class="flex">
-                  <img class="cart-item-img" src="<?php echo $product["image"];?>">
+                  <img class="cart-item-img" src="<?php echo $product->getImage();?>">
                   <div class="cart-item-detail">
-                    <p class="cart-item-title"><?php echo $product["name"];?></p>
+                    <p class="cart-item-title"><?php echo $product->getName();?></p>
                     <!-- 連想配列としてPOSTにデータが入ってくる -->
-                    <p><?php echo $_POST[$product["id"]]; ?> × <?php echo $product["price"];?></p>
+                    <p><?php echo $_POST[$product->getId()]; ?> × <?php echo $product->getPrice();?></p>
                   </div>
                 </div>
             </div>
