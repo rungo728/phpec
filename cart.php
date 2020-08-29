@@ -1,9 +1,9 @@
 <?php 
   require_once 'products.php';
-  $sum = 0;
+  require_once 'classes/cart.php';
   foreach($products as $product)  {
-    $price = $product->getPrice() * $_POST[$product->getId()];
-    $sum = $sum + $price;
+    // cartに全ての商品と個数を加える
+    Cart::add($product,$_POST[$product->getId()]);
   }
 
 ?>
@@ -36,9 +36,11 @@
           <?php endif; ?>
         <?php endforeach; ?>
       </div>
-      <div class="btn-footer bg-gray">
-        <input class="checkout-btn" type="submit" value="<?php echo $sum."円を決済する"; ?>">
-      </div>
+      <form method="post" action="payment.php" class="">
+        <div class="btn-footer bg-gray">
+          <input class="checkout-btn" type="submit" value="<?php echo Cart::calTotalPrice()."円を決済する"; ?>">
+        </div>
+      </form>
     </div>
   </div>
 </body>
