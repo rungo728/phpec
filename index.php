@@ -22,7 +22,7 @@
               <img class="card-image" src="<?php echo $product->getImage(); ?>" alt="">
               <p class="card-title"><?php echo $product->getName(); ?></p>
               <div class="flex justify-between">
-                <p class="card-price"><?php echo displayPrice($product->getPrice());?></p>
+                <p class="card-price"><?php echo $product->displayPrice();?></p>
                 <!-- idを固有の値にするため、nameに記述 -->
                 <input name="<?php echo $product->getId(); ?>" min="0" class="item-number" type="number" value="0">
               </div>

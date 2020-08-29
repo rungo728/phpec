@@ -28,6 +28,16 @@
     public function getImage(){
       return $this->image;
     }
+    // privateにするのは以下のfunctionがfunctiondisplayPriceの中でのみ実行されるので
+    // インスタンスから直接呼ばれることもないので
+    private function calPriceIncludedTax(){
+      $taxRate = 0.1;
+      return $this->price + $this->price * $taxRate;
+    }
+    public function displayPrice(){
+      $price = $this->calPriceIncludedTax();
+      return $price."円";
+    }
   }
 
 ?>
